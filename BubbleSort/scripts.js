@@ -1,7 +1,6 @@
 var values = [];
 var i = 0;
 var j = 0;
-var counter = 0;
 
 function setup() {
     createCanvas(500, 400);
@@ -19,7 +18,7 @@ function draw() {
         line(i, height, i, height - values[i]);
     }
     
-    for (let amt = 0; amt < 30; amt++) {
+    for (let amt = 0; amt < 300; amt++) {
         var a = values[j];
         var b = values[j + 1];
         if (a > b) {
@@ -36,8 +35,6 @@ function draw() {
             console.log('Finished');
             break;
         }
-        counter++;
-        console.log(counter);
     }
 }
 

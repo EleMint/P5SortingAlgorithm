@@ -4,11 +4,10 @@ var values = [];
 var swapped = true;
 var start = 0;
 var end;
-var counter = 0;
-
 
 function setup() {
     createCanvas(500, 400);
+    
     for (var i = 0; i < w; i++) {
         values.push(random(h - 50));
     }
@@ -17,6 +16,7 @@ function setup() {
 
 function draw() {
     background(51);
+    console.log(frameRate());
     for (var i = 0; i < values.length; i++) {
         stroke(255);
         line(i, h, i, h - values[i]);
@@ -29,7 +29,6 @@ function draw() {
             Swap(values, i, i + 1);
             swapped = true;
         }
-        counter++;
     }
 
     if (!swapped) {
@@ -46,11 +45,8 @@ function draw() {
             Swap(values, i, i + 1);
             swapped = true;
         }
-        counter++;
     }
-
     start++;
-    console.log(counter);
 }
 
 function Swap(arr, a, b) {
