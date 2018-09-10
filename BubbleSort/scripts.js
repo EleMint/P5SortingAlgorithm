@@ -1,9 +1,13 @@
 var values = [];
 var i = 0;
 var j = 0;
+var fR = 0;
+var fRC = 0;
+var count = 0;
+var IterationRate = 10000;
 
 function setup() {
-    createCanvas(500, 400);
+    createCanvas(1500, 400);
 
     for (let i = 0; i < width; i++) {
         values[i] = random(height - 50);
@@ -13,12 +17,18 @@ function setup() {
 function draw() {
     background(51);
     strokeWeight(1);
+    fR += frameRate();
+    fRC++;
+
+    console.log('Average Frame Rate: ', fR/fRC);
+    console.log('Percent Completed: ', i * 100 / values.length + '%');
     for (let i = 0; i < values.length; i++) {
         stroke(255);
         line(i, height, i, height - values[i]);
     }
     
-    for (let amt = 0; amt < 300; amt++) {
+    for (let amt = 0; amt < IterationRate; amt++) {
+        count += 2;
         var a = values[j];
         var b = values[j + 1];
         if (a > b) {
@@ -32,7 +42,8 @@ function draw() {
             }
         } else {
             noLoop();
-            console.log('Finished');
+            console.log('Times Array Was Accessed ' + nfc(count) + ' Times');
+            console.log('Finished, Iterated At ' + nfc(IterationRate) + ' Times A Frame');
             break;
         }
     }
